@@ -1,13 +1,56 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>FinSight AI</title>
-</head>
-<body>
-    <h1>FINSIGHT AI</h1>
-    
-    
-</body>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <h1>FinSight <span>AI</span></h1>
+        <p>Your ruthless financial reality check</p>
+      </div>
+
+      <div class="form-card">
+        <h2>Enter Your Financial Data</h2>
+
+        <div class="form-group">
+          <label>Monthly Income (₦)</label>
+          <input type="number" id="income" placeholder="e.g. 500000" />
+        </div>
+
+        <div class="form-group">
+          <label>Monthly Expenses (₦)</label>
+          <input type="number" id="expenses" placeholder="e.g. 300000" />
+        </div>
+
+        <div class="form-group">
+          <label>Monthly Savings (₦)</label>
+          <input type="number" id="savings" placeholder="e.g. 50000" />
+        </div>
+
+        <div class="form-group">
+          <label>Total Debt (₦)</label>
+          <input type="number" id="debt" placeholder="e.g. 200000" />
+        </div>
+
+        <div class="form-group">
+          <label>Financial Goal</label>
+          <select id="goal">
+            <option value="">-- Select your goal --</option>
+            <option value="short-term">Short Term</option>
+            <option value="long-term">Long Term</option>
+            <option value="emergency">Emergency</option>
+          </select>
+        </div>
+
+        <button id="analyzeBtn">Analyze My Finances</button>
+        <p id="error-msg" class="error"></p>
+      </div>
+    </div>
+
+    <script src="app.js"></script>
+  </body>
 </html>

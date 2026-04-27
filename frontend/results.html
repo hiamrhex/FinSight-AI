@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>FinSight AI — Results</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="results-container">
+    <div class="header" style="text-align:center; margin-bottom:30px;">
+      <h1>FinSight <span>AI</span></h1>
+    </div>
+
+    <div id="loading" class="loading">
+      <div class="spinner"></div>
+      <p>Analyzing your finances...</p>
+    </div>
+
+    <div id="results" style="display:none;">
+      <div id="risk-banner" class="risk-banner">
+        <div class="risk-score" id="risk-score"></div>
+        <div class="risk-label" id="risk-label"></div>
+      </div>
+
+      <div class="metrics-grid">
+        <div class="metric-card">
+          <div class="label">Savings Rate</div>
+          <div class="value" id="savings-rate"></div>
+          <div class="unit">of income saved</div>
+        </div>
+        <div class="metric-card">
+          <div class="label">Expense Ratio</div>
+          <div class="value" id="expense-ratio"></div>
+          <div class="unit">of income spent</div>
+        </div>
+        <div class="metric-card">
+          <div class="label">Debt Ratio</div>
+          <div class="value" id="debt-ratio"></div>
+          <div class="unit">of income in debt</div>
+        </div>
+        <div class="metric-card">
+          <div class="label">Runway</div>
+          <div class="value" id="runway"></div>
+          <div class="unit">months without income</div>
+        </div>
+      </div>
+
+      <div class="verdict-card">
+        <div class="verdict-title">🏦 Bank Verdict</div>
+        <div class="verdict-text" id="bank-verdict"></div>
+      </div>
+
+      <div class="verdict-card">
+        <div class="verdict-title">⏱ Runway Verdict</div>
+        <div class="verdict-text" id="runway-verdict"></div>
+      </div>
+
+      <div class="analysis-card">
+        <h3>🤖 AI Financial Analysis</h3>
+        <p id="analysis"></p>
+      </div>
+
+      <a href="index.html" class="back-btn">← Analyze Again</a>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
