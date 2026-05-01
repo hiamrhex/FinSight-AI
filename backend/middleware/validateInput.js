@@ -1,7 +1,13 @@
 const validateInput = (req, res, next) => {
   const { income, expenses, savings, debt, goal } = req.body;
 
-  if (!income || !expenses || !savings || !debt || !goal) {
+  if (
+    income === undefined || income === null || income === '' ||
+    expenses === undefined || expenses === null || expenses === '' ||
+    savings === undefined || savings === null || savings === '' ||
+    debt === undefined || debt === null || debt === '' ||
+    !goal
+  ) {
     return res.status(400).json({ error: 'All fields are required' });
   }
 
@@ -11,6 +17,10 @@ const validateInput = (req, res, next) => {
 
   if (Number(income) <= 0) {
     return res.status(400).json({ error: 'income must be greater than zero' });
+  }
+
+  if (Number(expenses) < 0 || Number(savings) < 0 || Number(debt) < 0){
+    return res.status(400).json({ error: 'Values cannot be negative'})
   }
 
   const validGoals = ['short-term', 'long-term', 'emergency'];
