@@ -1,56 +1,139 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>FinSight AI</title>
-    <link rel="stylesheet" href="style.css" />
-  </head>
-  <body>
-    <div class="container">
-      <div class="header">
-        <h1>FinSight <span>AI</span></h1>
-        <p>Your ruthless financial reality check</p>
-      </div>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>FinSight AI — Your Financial Reality Check</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body class="index-page">
 
+  <!-- Background -->
+  <div class="bg-grid"></div>
+  <div class="bg-glow"></div>
+
+  <div class="page-wrapper">
+
+    <!-- Nav -->
+    <nav class="nav">
+      <div class="nav-logo">FinSight <span>AI</span></div>
+      <div class="nav-tag">Beta</div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="hero">
+      <div class="hero-badge">🇳🇬 Built for Nigerian Reality</div>
+      <h1 class="hero-title">
+        Your money is<br/>
+        <span class="hero-accent">lying to you.</span>
+      </h1>
+      <p class="hero-sub">Enter your numbers. Get the brutal truth about your finances — no sugarcoating, no big grammar. Just what you need to do right now.</p>
+      <a href="#form" class="hero-cta">Check My Finances <span>→</span></a>
+
+      <div class="hero-stats">
+        <div class="stat">
+          <div class="stat-num">33%</div>
+          <div class="stat-label">Nigeria's inflation rate</div>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat">
+          <div class="stat-num">72%</div>
+          <div class="stat-label">Nigerians with no savings</div>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat">
+          <div class="stat-num">0</div>
+          <div class="stat-label">Excuses accepted here</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Form -->
+    <section class="form-section" id="form">
       <div class="form-card">
-        <h2>Enter Your Financial Data</h2>
-
-        <div class="form-group">
-          <label>Monthly Income (₦)</label>
-          <input type="number" id="income" min="1"/>
+        <div class="form-header">
+          <div class="form-step">01</div>
+          <div>
+            <h2 class="form-title">Enter Your Numbers</h2>
+            <p class="form-sub">Be honest. The AI can't help you if you lie to it.</p>
+          </div>
         </div>
 
-        <div class="form-group">
-          <label>Monthly Expenses (₦)</label>
-          <input type="number" id="expenses" min="1" />
+        <div class="fields">
+          <div class="field-group">
+            <label class="field-label">Monthly Income</label>
+            <div class="field-input-wrap">
+              <span class="field-prefix">₦</span>
+              <input type="number" id="income" min="1" class="field-input" />
+            </div>
+          </div>
+
+          <div class="field-group">
+            <label class="field-label">Monthly Expenses</label>
+            <div class="field-input-wrap">
+              <span class="field-prefix">₦</span>
+              <input type="number" id="expenses" min="0" class="field-input" />
+            </div>
+          </div>
+
+          <div class="field-row">
+            <div class="field-group">
+              <label class="field-label">Monthly Savings</label>
+              <div class="field-input-wrap">
+                <span class="field-prefix">₦</span>
+                <input type="number" id="savings" min="0" class="field-input" />
+              </div>
+            </div>
+            <div class="field-group">
+              <label class="field-label">Total Debt</label>
+              <div class="field-input-wrap">
+                <span class="field-prefix">₦</span>
+                <input type="number" id="debt" min="0" class="field-input" />
+              </div>
+            </div>
+          </div>
+
+          <div class="field-group">
+            <label class="field-label">Financial Goal</label>
+            <div class="select-wrap">
+              <select id="goal" class="field-select">
+                <option value="">What are you working towards?</option>
+                <option value="short-term">Short Term — I need results in months</option>
+                <option value="long-term">Long Term — I am building for the future</option>
+                <option value="emergency">Emergency — I need to stabilize first</option>
+              </select>
+              <span class="select-arrow">↓</span>
+            </div>
+          </div>
         </div>
 
-        <div class="form-group">
-          <label>Monthly Savings (₦)</label>
-          <input type="number" id="savings" min="1" />
-        </div>
-
-        <div class="form-group">
-          <label>Total Debt (₦)</label>
-          <input type="number" id="debt" min="1" />
-        </div>
-
-        <div class="form-group">
-          <label>Financial Goal</label>
-          <select id="goal">
-            <option value="">-- Select your goal --</option>
-            <option value="short-term">Short Term</option>
-            <option value="long-term">Long Term</option>
-            <option value="emergency">Emergency</option>
-          </select>
-        </div>
-
-        <button id="analyzeBtn">Analyze My Finances</button>
-        <p id="error-msg" class="error"></p>
+        <button id="analyzeBtn" class="analyze-btn">
+          <span class="btn-text">Analyze My Finances</span>
+          <span class="btn-arrow">→</span>
+        </button>
+        <p id="error-msg" class="error-msg"></p>
       </div>
-    </div>
 
-    <script src="app.js"></script>
-  </body>
+      <div class="form-side">
+        <div class="trust-card">
+          <div class="trust-icon">🔒</div>
+          <p>Your data never leaves your device. Nothing is stored. No account needed.</p>
+        </div>
+        <div class="trust-card">
+          <div class="trust-icon">⚡</div>
+          <p>Results in under 5 seconds. Powered by real AI, not generic advice.</p>
+        </div>
+        <div class="trust-card">
+          <div class="trust-icon">🎯</div>
+          <p>Nigerian-specific advice. We know about naira inflation, not dollar assumptions.</p>
+        </div>
+      </div>
+    </section>
+
+  </div>
+
+  <script src="app.js"></script>
+</body>
 </html>

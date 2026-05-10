@@ -7,11 +7,27 @@ const calculateMetrics = (income, expenses, savings, debt) => {
 
   const runway = (savings / (expenses || 1)).toFixed(1);
 
+  const INFLATION_RATE = 0.33
+  const doNothingValue = (savings*Math.pow(1-INFLATION_RATE, 5)).toFixed(2)
+
+  const INVESTMENT_RETURN = 0.15
+  const monthlyInvestment= expenses * 0.15
+  const wealthAt1 = (monthlyInvestment*  ((Math.pow(1 + INVESTMENT_RETURN, 1) - 1) / INVESTMENT_RETURN)).toFixed(2)
+  const wealthAt3 = (monthlyInvestment * ((Math.pow(1 + INVESTMENT_RETURN, 3) -1)/INVESTMENT_RETURN )).toFixed(2)
+  const wealthAt5 = (monthlyInvestment * ((Math.pow(1 + INVESTMENT_RETURN, 5) -1)/INVESTMENT_RETURN)).toFixed(2)
+
   return {
     savingsRate: Number(savingsRate),
     expenseRatio: Number(expenseRatio),
     debtRatio: Number(debtRatio),
     runway: Number(runway),
+
+    doNothingValue: Number(doNothingValue),
+    wealthProjection:{
+      year1: Number(wealthAt1),
+      year3: Number(wealthAt3),
+      year5: Number(wealthAt5)
+    }
   };
 };
 

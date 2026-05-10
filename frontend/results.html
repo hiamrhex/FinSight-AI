@@ -3,65 +3,139 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>FinSight AI — Results</title>
+  <title>FinSight AI — Your Results</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css" />
 </head>
-<body>
-  <div class="results-container">
-    <div class="header" style="text-align:center; margin-bottom:30px;">
-      <h1>FinSight <span>AI</span></h1>
+<body class="results-page">
+
+  <div class="bg-grid"></div>
+  <div class="bg-glow results-glow"></div>
+
+  <div class="page-wrapper">
+
+    <nav class="nav">
+      <div class="nav-logo">FinSight <span>AI</span></div>
+      <a href="index.html" class="nav-back">← New Analysis</a>
+    </nav>
+
+    <!-- Loading -->
+    <div id="loading" class="loading-screen">
+      <div class="loading-ring"></div>
+      <p class="loading-text">Reading your finances...</p>
+      <p class="loading-sub">The AI doesn't lie. Are you ready?</p>
     </div>
 
-    <div id="loading" class="loading">
-      <div class="spinner"></div>
-      <p>Analyzing your finances...</p>
-    </div>
+    <!-- Results -->
+    <div id="results" style="display:none;" class="results-wrapper">
 
-    <div id="results" style="display:none;">
-      <div id="risk-banner" class="risk-banner">
-        <div class="risk-score" id="risk-score"></div>
-        <div class="risk-label" id="risk-label"></div>
-      </div>
-
-      <div class="metrics-grid">
-        <div class="metric-card">
-          <div class="label">Savings Rate</div>
-          <div class="value" id="savings-rate"></div>
-          <div class="unit">of income saved</div>
+      <!-- Score Banner -->
+      <div id="risk-banner" class="score-banner">
+        <div class="score-left">
+          <div class="score-label-top">YOUR FINANCIAL RISK SCORE</div>
+          <div class="score-number" id="risk-score"></div>
+          <div class="score-level" id="risk-label"></div>
         </div>
-        <div class="metric-card">
-          <div class="label">Expense Ratio</div>
-          <div class="value" id="expense-ratio"></div>
-          <div class="unit">of income spent</div>
-        </div>
-        <div class="metric-card">
-          <div class="label">Debt Ratio</div>
-          <div class="value" id="debt-ratio"></div>
-          <div class="unit">of income in debt</div>
-        </div>
-        <div class="metric-card">
-          <div class="label">Runway</div>
-          <div class="value" id="runway"></div>
-          <div class="unit">months without income</div>
+        <div class="score-right">
+          <div class="score-ring-wrap">
+            <svg class="score-ring" viewBox="0 0 120 120">
+              <circle class="ring-bg" cx="60" cy="60" r="50"/>
+              <circle class="ring-fill" id="ring-fill" cx="60" cy="60" r="50"/>
+            </svg>
+            <div class="score-ring-num" id="ring-num"></div>
+          </div>
         </div>
       </div>
 
-      <div class="verdict-card">
-        <div class="verdict-title">🏦 Bank Verdict</div>
-        <div class="verdict-text" id="bank-verdict"></div>
+      <!-- Metrics -->
+      <div class="metrics-row">
+        <div class="metric-tile">
+          <div class="metric-icon">💰</div>
+          <div class="metric-val" id="savings-rate"></div>
+          <div class="metric-name">You Save</div>
+          <div class="metric-hint">of your income</div>
+        </div>
+        <div class="metric-tile">
+          <div class="metric-icon">🛒</div>
+          <div class="metric-val" id="expense-ratio"></div>
+          <div class="metric-name">You Spend</div>
+          <div class="metric-hint">of your income</div>
+        </div>
+        <div class="metric-tile">
+          <div class="metric-icon">⛓</div>
+          <div class="metric-val" id="debt-ratio"></div>
+          <div class="metric-name">Debt Load</div>
+          <div class="metric-hint">of your income</div>
+        </div>
+        <div class="metric-tile">
+          <div class="metric-icon">⏳</div>
+          <div class="metric-val" id="runway"></div>
+          <div class="metric-name">Survival Time</div>
+          <div class="metric-hint">if income stops</div>
+        </div>
       </div>
 
-      <div class="verdict-card">
-        <div class="verdict-title">⏱ Runway Verdict</div>
-        <div class="verdict-text" id="runway-verdict"></div>
+      <!-- Verdicts -->
+      <div class="verdicts-row">
+        <div class="verdict-tile bank">
+          <div class="verdict-tag">🏦 Bank Verdict</div>
+          <div class="verdict-body" id="bank-verdict"></div>
+        </div>
+        <div class="verdict-tile survival">
+          <div class="verdict-tag">⏱ Survival Verdict</div>
+          <div class="verdict-body" id="runway-verdict"></div>
+        </div>
       </div>
 
-      <div class="analysis-card">
-        <h3>🤖 AI Financial Analysis</h3>
-        <p id="analysis"></p>
+      <!-- Wealth Projector -->
+      <div class="wealth-section">
+        <div class="wealth-header">
+          <h3 class="wealth-title">The Cost of Doing Nothing</h3>
+          <p class="wealth-sub">Here is what happens to your money over time — whether you act or not.</p>
+        </div>
+
+        <div class="wealth-compare">
+          <div class="wealth-col bad">
+            <div class="wealth-col-label">😴 If You Do Nothing</div>
+            <div class="wealth-col-desc">Your savings after 5 years of inflation</div>
+            <div class="wealth-col-val" id="do-nothing-value-display"></div>
+            <div class="wealth-col-note">₦ eaten by 33% inflation</div>
+          </div>
+          <div class="wealth-vs">VS</div>
+          <div class="wealth-col good">
+            <div class="wealth-col-label">📈 If You Invest 15%</div>
+            <div class="wealth-col-desc">Redirecting 15% of spending into investments</div>
+            <div class="wealth-projections">
+              <div class="projection-item">
+                <span class="proj-year">Year 1</span>
+                <span class="proj-val" id="wealth-year1"></span>
+              </div>
+              <div class="projection-item">
+                <span class="proj-year">Year 3</span>
+                <span class="proj-val" id="wealth-year3"></span>
+              </div>
+              <div class="projection-item highlight">
+                <span class="proj-year">Year 5</span>
+                <span class="proj-val" id="wealth-year5"></span>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
 
-      <a href="index.html" class="back-btn">← Analyze Again</a>
+      <!-- AI Analysis -->
+      <div class="ai-card">
+        <div class="ai-header">
+          <div class="ai-dot"></div>
+          <span class="ai-label">AI Financial Analysis</span>
+        </div>
+        <p class="ai-text" id="analysis"></p>
+        <div class="ai-footer">Powered by LLaMA 3 · Nigerian financial context</div>
+      </div>
+
+      <a href="index.html" class="back-link">← Run Another Analysis</a>
+
     </div>
   </div>
 
